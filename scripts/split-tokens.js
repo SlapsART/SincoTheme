@@ -126,6 +126,12 @@ function furtherSplit(data, baseName) {
 // Ejecutar
 console.log('🔧 Dividiendo Tokens.json...\n');
 
+// Verificar que existe el archivo fuente
+if (!fs.existsSync(SOURCE_FILE)) {
+  console.error(`❌ Error: No se encontró ${SOURCE_FILE}`);
+  process.exit(1);
+}
+
 const tokens = JSON.parse(fs.readFileSync(SOURCE_FILE, 'utf8'));
 const categories = splitByCategory(tokens);
 

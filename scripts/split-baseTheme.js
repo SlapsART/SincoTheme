@@ -65,6 +65,12 @@ function extractSections(content) {
 // Ejecutar
 console.log('🔧 Dividiendo baseTheme.ts...\n');
 
+// Verificar que existe el archivo fuente
+if (!fs.existsSync(SOURCE_FILE)) {
+  console.error(`❌ Error: No se encontró ${SOURCE_FILE}`);
+  process.exit(1);
+}
+
 const content = fs.readFileSync(SOURCE_FILE, 'utf8');
 const sections = extractSections(content);
 

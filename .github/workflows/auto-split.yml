@@ -32,8 +32,8 @@ jobs:
         uses: tj-actions/changed-files@v41
         with:
           files: |
-            source/tokens/themeTokensCosmos.json
-            source/base/baseTheme.ts
+            source/Tokens.json
+            baseTheme.ts
 
       - name: Split Tokens.json
         if: contains(steps.changed-files.outputs.all_changed_files, 'source/tokens/themeTokensCosmos.json')
@@ -47,6 +47,15 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add Tokens/ baseTheme/
-          git diff --staged --quiet || git commit -m "🤖 Auto-split: Updated from source files"
-          git push
+          
+          # Añadir archivos solo si existen
+          [ -d "Tokens" ] && git add Tokens/ || echo "Tokens/ no existe"
+          [ -d "baseTheme" ] && git add baseTheme/ || echo "baseTheme/ no existe"
+          
+          # Commit solo si hay cambios
+          if git diff --staged --quiet; then
+            echo "No hay cambios para commitear"
+          else
+            git commit -m "🤖 Auto-split: Updated from source files"
+            git push
+          fi
