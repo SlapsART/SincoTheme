@@ -127,7 +127,7 @@
       "main": {
         "$type": "color",
         "$value": {
-          "Light": "{primary.light.500}",
+          "Light": "{primary.light.600}",
           "Dark": "{primary.dark.500}"
         }
       },
