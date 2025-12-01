@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SOURCE_FILE = './source/Tokens.json';
+const SOURCE_FILE = './source/tokens/themeTokensCosmos.json';
 const OUTPUT_DIR = './Tokens';
 const MAX_SIZE = 10 * 1024; // 10KB
 

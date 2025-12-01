@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SOURCE_FILE = './baseTheme.ts';
+const SOURCE_FILE = './source/base/baseTheme.ts';
 const OUTPUT_DIR = './baseTheme';
 const MAX_SIZE = 10 * 1024; // 10KB
 
