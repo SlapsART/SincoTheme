@@ -37,11 +37,11 @@ jobs:
 
       - name: Split Tokens.json
         if: contains(steps.changed-files.outputs.all_changed_files, 'source/tokens/themeTokensCosmos.json')
-        run: node scripts/split-tokens.js
+        run: node ./scripts/split-tokens.js
 
       - name: Split baseTheme.ts
         if: contains(steps.changed-files.outputs.all_changed_files, 'source/base/baseTheme.ts')
-        run: node scripts/split-baseTheme.js
+        run: node ./scripts/split-baseTheme.js
 
       - name: Commit and push changes
         run: |
