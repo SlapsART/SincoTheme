@@ -6,8 +6,8 @@ on:
       - main
       - master
     paths:
-      - 'source/Tokens.json'
-      - 'baseTheme.ts'
+      - 'source/tokens/themeTokensCosmos.json'
+      - 'source/base/baseTheme.ts'
 
 jobs:
   split-files:
@@ -36,11 +36,11 @@ jobs:
             baseTheme.ts
 
       - name: Split Tokens.json
-        if: contains(steps.changed-files.outputs.all_changed_files, 'source/Tokens.json')
+        if: contains(steps.changed-files.outputs.all_changed_files, 'source/tokens/themeTokensCosmos.json')
         run: node scripts/split-tokens.js
 
       - name: Split baseTheme.ts
-        if: contains(steps.changed-files.outputs.all_changed_files, 'baseTheme.ts')
+        if: contains(steps.changed-files.outputs.all_changed_files, 'source/base/baseTheme.ts')
         run: node scripts/split-baseTheme.js
 
       - name: Commit and push changes
